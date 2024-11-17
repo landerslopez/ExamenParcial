@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -26,14 +26,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="alumn:${alumnno}">
-				<td th:text="${alumn.nombre}"></td>
-				<td th:text="${alumn.nota}"></td>
+			<tr th:each="alumno:${alumnnos}">
+				<td th:text="${alumno.nombre}"></td>
+				<td th:text="${alumno.nota}"></td>
 				<td>
-					<a th:href="@{/alumno/findById/}+${alumn.idAlumno}"> Modificar</a>
+					<a th:href="@{/alumno/findById/}+${alumno.idAlumno}"> Modificar</a>
 				</td>
 				<td>
-					<a th:href="@{/alumno/delte/}+${alumn.idAlumno}">Eliminar</a>
+					<a th:href="@{/alumno/delete/}+${alumno.idAlumno}">Eliminar</a>
 				</td>
 			</tr>
 		</tbody>
@@ -41,4 +41,4 @@
 	
 	</div>
 </body>
-</html> -->
+</html>

@@ -3,6 +3,7 @@ package lopezPezo.MsLanders.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,21 +12,27 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import lopezPezo.MsLanders.model.AlumnoModel;
 import lopezPezo.MsLanders.services.AlumnoService;
 
-@RestController
+//@RestController //Para hacer consulta http y que devuelva datos en formato json
+@Controller //Para manejar las vistas en html
 @RequestMapping("alumno")
+
 public class AlumnoController {
     @Autowired
-    AlumnoService alumnoService;
+    private AlumnoService alumnoService;
     
-    @GetMapping("/findAll")
-    public List<AlumnoModel> FindAll()
+    @GetMapping("/findAllAlumn")
+    public ModelAndView FindAllAlumnos()
     {
-        List<AlumnoModel> lista = alumnoService.findAll();
-        return lista;
+        ModelAndView mav = new ModelAndView("findAllAlumn");
+        mav.addObject("alumnos", alumnoService.findAll());
+		mav.addObject("alumno", new AlumnoModel());
+		mav.addObject("accion","/alumno/create");
+        return mav;
     }
     
 
