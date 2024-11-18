@@ -56,9 +56,9 @@ public class AlumnoController {
     }
 
     // delete
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id) {
-        alumnoService.deleteStudent(id);
-        return "Usuario eliminado con éxito";
+    @GetMapping ("/delete/{id}")
+    public String deleteAlumno(@PathVariable(name = "id") String id) {
+        alumnoService.deleteStudent(Integer.parseInt(id));
+		return "redirect:/alumno/listAlumno";
     }
 }
