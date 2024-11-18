@@ -6,13 +6,13 @@ import lopezPezo.MsLanders.model.AlumnoModel;
 
 public interface IAlumnoService {
 
-    public List<AlumnoModel> findAll();
+    public List<AlumnoModel> findAllStudent();
 
-    public AlumnoModel findById(Integer id);
+    public AlumnoModel findByIdStudent(Integer id);
 
-    public AlumnoModel add(AlumnoModel model);
+    public AlumnoModel addStudent(AlumnoModel model);
 
-    public AlumnoModel update(AlumnoModel model);
+    public AlumnoModel updateStudent(AlumnoModel model);
 
-    public Boolean delete(Integer id);    
+    public Boolean deleteStudent(Integer id);    
 }

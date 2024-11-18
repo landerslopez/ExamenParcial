@@ -14,27 +14,27 @@ public class AlumnoService implements IAlumnoService {
     IAlumnoRepository repository;
 
     @Override
-    public List<AlumnoModel> findAll() {
+    public List<AlumnoModel> findAllStudent() {
         return (List<AlumnoModel>)repository.findAll();
     }
 
     @Override
-    public AlumnoModel findById(Integer id) {
+    public AlumnoModel findByIdStudent(Integer id) {
         return (AlumnoModel)repository.findById(id).get();
     }
 
     @Override
-    public AlumnoModel add(AlumnoModel model) {
+    public AlumnoModel addStudent(AlumnoModel model) {
         return repository.save(model);
     }
 
     @Override
-    public AlumnoModel update(AlumnoModel model) {
+    public AlumnoModel updateStudent(AlumnoModel model) {
         return repository.save(model);
     }
 
     @Override
-    public Boolean delete(Integer id) {
+    public Boolean deleteStudent(Integer id) {
         repository.deleteById(id);
         return true;
     }
