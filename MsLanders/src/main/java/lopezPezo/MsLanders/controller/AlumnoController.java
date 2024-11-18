@@ -1,5 +1,7 @@
 package lopezPezo.MsLanders.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +26,7 @@ public class AlumnoController {
     
     @GetMapping("/listAlumno")
     public ModelAndView listStudents()
-    {
+    { 
         ModelAndView mav = new ModelAndView("listAlumno");
         mav.addObject("alumnos", alumnoService.findAllStudent());
 		mav.addObject("alumno", new AlumnoModel());

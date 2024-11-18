@@ -47,5 +47,6 @@ public class AlumnoModel {
     public void setNota(BigDecimal nota) {
         this.nota = nota;
     }
+
     
 }

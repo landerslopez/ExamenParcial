@@ -19,6 +19,7 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<td>ID</td>
 				<td>NOMBRE</td>
 				<td>NOTA</td>
 				<td>MODIFICAR</td>
@@ -26,7 +27,8 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="alumno:${alumnnos}">
+			<tr th:each="alumno : ${alumnos}">
+				<td th:text="${alumno.idAlumno}"></td>
 				<td th:text="${alumno.nombre}"></td>
 				<td th:text="${alumno.nota}"></td>
 				<td>
