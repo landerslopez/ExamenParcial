@@ -9,6 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="alumno")
 
@@ -24,29 +27,4 @@ public class AlumnoModel {
     @Column(name = "nota" , precision = 3 , scale = 2)
     public BigDecimal nota;
 
-    public Integer getIdAlumno() {
-        return idAlumno;
-    }
-
-    public void setIdAlumno(Integer idAlumno) {
-        this.idAlumno = idAlumno;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public BigDecimal getNota() {
-        return nota;
-    }
-
-    public void setNota(BigDecimal nota) {
-        this.nota = nota;
-    }
-
-    
 }
