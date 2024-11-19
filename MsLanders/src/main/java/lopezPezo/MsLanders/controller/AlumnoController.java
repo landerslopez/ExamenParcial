@@ -54,7 +54,7 @@ public class AlumnoController {
     }
 
     // update
-    @PutMapping("/update/{id}")
+    @PostMapping("/update")
     public String editAlumno(@ModelAttribute(name = "alumno") AlumnoModel model) {
         alumnoService.updateStudent(model, model.getIdAlumno());
         return "redirect:/alumno/listAlumno"; 
