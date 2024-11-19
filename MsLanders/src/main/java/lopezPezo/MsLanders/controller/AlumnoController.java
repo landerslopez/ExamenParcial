@@ -3,7 +3,6 @@ package lopezPezo.MsLanders.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +16,7 @@ import lopezPezo.MsLanders.services.AlumnoServiceImpl;
 @Controller //Para manejar las vistas en html
 @RequestMapping("/alumno")
 public class AlumnoController {
+    
     @Autowired
     private AlumnoServiceImpl alumnoService;
     
@@ -30,7 +30,7 @@ public class AlumnoController {
     
 
     @PostMapping("/create")
-    public String createAlumno(@ModelAttribute(name="alumno") @Validated AlumnoModel model ){   
+    public String createAlumno(@ModelAttribute(name="alumno") AlumnoModel model ){   
         alumnoService.addStudent(model);
         return "redirect:/alumno/listAlumno";
     }
