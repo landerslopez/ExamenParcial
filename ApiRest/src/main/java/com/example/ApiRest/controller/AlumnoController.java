@@ -19,7 +19,7 @@ import com.example.ApiRest.router.ApiRoutes;
 import com.example.ApiRest.service.AlumnoService;
 
 @RestController
-@RequestMapping(ApiRoutes.ALUMNOS_BASE)
+@RequestMapping(ApiRoutes.ALUMNOS)
 public class AlumnoController {
 
     @Autowired
