@@ -32,14 +32,14 @@ public class AlumnoModel {
 
     @NotNull(message = "El nombre no puede ser nulo")
     @Size(min = 1, max = 100, message = "El nombre debe tener entre 1 y 100 caracteres")
-    @Column(name = "nombre", length = 100)
+    @Column(name = "nombre", length = 100, nullable = false)
     public String nombre;
 
     @NotNull(message = "La nota no puede ser nula")
     @DecimalMin(value = "0.00", message = "La nota debe ser mayor o igual a 0")
     @DecimalMax(value = "10.00", message = "La nota debe ser menor o igual a 10")
     @Digits(integer = 3, fraction = 2, message = "La nota debe tener un formato válido con hasta 3 dígitos enteros y 2 decimales")
-    @Column(name = "nota" , precision = 5 , scale = 2)
+    @Column(name = "nota" , precision = 5 , scale = 2, nullable = false)
     public BigDecimal nota;
 
 }

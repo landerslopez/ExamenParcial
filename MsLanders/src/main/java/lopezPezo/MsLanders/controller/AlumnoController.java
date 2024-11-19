@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lopezPezo.MsLanders.model.AlumnoModel;
 import lopezPezo.MsLanders.services.AlumnoServiceImpl;
+import lopezPezo.MsLanders.router.ApiRouter;
 
 //@RestController //Para hacer consulta http y que devuelva datos en formato json
 @Controller // Para manejar las vistas en html
-@RequestMapping("/alumno")
+@RequestMapping(ApiRouter.ALUMNOS_BASE)
 public class AlumnoController {
 
     @Autowired
