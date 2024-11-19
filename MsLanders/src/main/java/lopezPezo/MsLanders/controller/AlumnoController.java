@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import lopezPezo.MsLanders.model.AlumnoModel;
-import lopezPezo.MsLanders.services.AlumnoService;
+import lopezPezo.MsLanders.services.AlumnoServiceImpl;
 
 //@RestController //Para hacer consulta http y que devuelva datos en formato json
 @Controller //Para manejar las vistas en html
@@ -23,7 +23,7 @@ import lopezPezo.MsLanders.services.AlumnoService;
 
 public class AlumnoController {
     @Autowired
-    private AlumnoService alumnoService;
+    private AlumnoServiceImpl alumnoService;
     
     @GetMapping("/listAlumno")
     public ModelAndView listStudents()
@@ -44,15 +44,20 @@ public class AlumnoController {
 
     // findById
     @GetMapping("/findById/{id}")
-    public AlumnoModel findById(@PathVariable Integer id) {
-        return alumnoService.findByIdStudent(id);
+    public ModelAndView findById(@PathVariable(name="id") String id) {
+        ModelAndView mav = new ModelAndView("listAlumno");
+        mav.addObject("alumnos", alumnoService.findAllStudent());
+        AlumnoModel u = alumnoService.findByIdStudent(Integer.parseInt(id));
+		mav.addObject("alumno", u);
+		mav.addObject("accion","/alumno/update");
+        return mav;
     }
 
     // update
     @PutMapping("/update/{id}")
-    public AlumnoModel update(@PathVariable Integer id, @RequestBody AlumnoModel model) {
-        model.setIdAlumno(id);
-        return alumnoService.updateStudent(model);
+    public String editAlumno(@ModelAttribute(name = "alumno") AlumnoModel model) {
+        alumnoService.updateStudent(model, model.getIdAlumno());
+        return "redirect:/alumno/listAlumno"; 
     }
 
     // delete
