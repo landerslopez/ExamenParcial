@@ -2,13 +2,13 @@ package lopezPezo.MsLanders.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import lopezPezo.MsLanders.model.AlumnoModel;
 import lopezPezo.MsLanders.services.AlumnoServiceImpl;
@@ -16,37 +16,33 @@ import lopezPezo.MsLanders.services.AlumnoServiceImpl;
 //@RestController //Para hacer consulta http y que devuelva datos en formato json
 @Controller //Para manejar las vistas en html
 @RequestMapping("/alumno")
-
 public class AlumnoController {
     @Autowired
     private AlumnoServiceImpl alumnoService;
     
     @GetMapping("/listAlumno")
-    public ModelAndView listStudents()
-    { 
-        ModelAndView mav = new ModelAndView("listAlumno");
-        mav.addObject("alumnos", alumnoService.findAllStudent());
-		mav.addObject("alumno", new AlumnoModel());
-		mav.addObject("accion","/alumno/create");
-        return mav;
+    public String listStudents(Model mav)    { 
+        mav.addAttribute("alumnos", alumnoService.findAllStudent());
+		mav.addAttribute("alumno", new AlumnoModel());
+		mav.addAttribute("accion","/alumno/create");
+        return "listAlumno";
     }
     
 
     @PostMapping("/create")
-    public String createAlumno(@ModelAttribute(name="alumno") @Validated AlumnoModel model){   
+    public String createAlumno(@ModelAttribute(name="alumno") @Validated AlumnoModel model ){   
         alumnoService.addStudent(model);
         return "redirect:/alumno/listAlumno";
     }
 
     // findById
     @GetMapping("/findById/{id}")
-    public ModelAndView findById(@PathVariable(name="id") String id) {
-        ModelAndView mav = new ModelAndView("listAlumno");
-        mav.addObject("alumnos", alumnoService.findAllStudent());
+    public String findById(@PathVariable(name="id") String id, Model mav) {
+        mav.addAttribute("alumnos", alumnoService.findAllStudent());
         AlumnoModel u = alumnoService.findByIdStudent(Integer.parseInt(id));
-		mav.addObject("alumno", u);
-		mav.addObject("accion","/alumno/update");
-        return mav;
+		mav.addAttribute("alumno", u);
+		mav.addAttribute("accion","/alumno/update");
+        return "listAlumno";
     }
 
     // update
