@@ -24,10 +24,10 @@ public class AlumnoModel {
     @Column(name = "id")
     public Integer idAlumno;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre" , length = 100)
     public String nombre;
 
-    @Column(name = "nota" , precision = 3 , scale = 2)
+    @Column(name = "nota" , precision = 5 , scale = 2)
     public BigDecimal nota;
 
 }

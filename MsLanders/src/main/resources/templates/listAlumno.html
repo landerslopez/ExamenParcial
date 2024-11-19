@@ -12,7 +12,7 @@
 <div class="container mt-4">
 <form action="#" th:action="@{${accion}}" method="post" th:object="${alumno}">
 		<p><input type="text" placeholder="Ingresar su nombre" th:field="*{nombre}" /></p>
-		<p><input type="number" placeholder="Ingresar su Nota" th:field="*{nota}" /></p>
+		<p><input type="text" placeholder="Ingresar su Nota" th:field="*{nota}" /></p>
 		<p><input type="hidden" th:field="*{idAlumno}" /></p>
 		<p><input type="submit" value="Enviar" /></p>
 	</form>
